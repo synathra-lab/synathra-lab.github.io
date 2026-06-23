@@ -1,0 +1,68 @@
+{
+  "manifest_type": "public_product_package_v0_5",
+  "created_utc": "2026-06-22T17:36:31.770521+00:00",
+  "source_release": "synathra_sport_release_v0_5_clean",
+  "decision": "PASS_V0_5_DOMAIN_TRANSFER",
+  "summary": {
+    "decision": "PASS_V0_5_DOMAIN_TRANSFER",
+    "validation_groups": 5,
+    "new_transfer_domains": 2,
+    "min_goal_lift_all_groups": 4.677835868785625,
+    "mean_goal_lift_all_groups": 4.788237950115609,
+    "min_goal_lift_new_domains": 4.6788284403102125,
+    "mean_goal_lift_new_domains": 4.761267799007044,
+    "min_auc_new_domains": 0.7290254305040916
+  },
+  "files": [
+    {
+      "path": "README_PUBLIC_PRODUCT_v0_5.md",
+      "bytes": 642,
+      "sha256": "8366dfb2d5a3fc90b788f07d67c9b539cb3c32d67282ddf870f0fe695524c3e6"
+    },
+    {
+      "path": "docs/one_pager_v0_5.md",
+      "bytes": 2157,
+      "sha256": "06b2fc9e5af566c6d94e967ea0b3919d07804c6b50fbf5bc00b2d86885c620e7"
+    },
+    {
+      "path": "docs/public_claims_guardrails_v0_5.md",
+      "bytes": 875,
+      "sha256": "1bb9b1cec543072e5a21e874aaf1162dc1814791e5db94d909107ddfef7d6d27"
+    },
+    {
+      "path": "docs/publication_abstract_synathra_lab_v0_5.md",
+      "bytes": 2216,
+      "sha256": "745808aba3c1f6d0805740c8abd40a4a84a4fe68da9e996cce501ac84f10cae2"
+    },
+    {
+      "path": "index.html",
+      "bytes": 1611,
+      "sha256": "26c305c8b2d8024a0205b4de3e4a2ac4d6bd23aa9903be95d825bc33afb93da5"
+    },
+    {
+      "path": "pages/demo_page_v0_5.html",
+      "bytes": 4106,
+      "sha256": "e68a7383c6a38393d8933d784d6689ba0885f354306490fe5a0e073e2d486d93"
+    },
+    {
+      "path": "pages/one_pager_v0_5.html",
+      "bytes": 3842,
+      "sha256": "a7ab3a0db1c5ef2a332a63dd97fcc00266575610ff5091541ea879b65ff6ea12"
+    },
+    {
+      "path": "pages/publication_abstract_synathra_lab_v0_5.html",
+      "bytes": 2686,
+      "sha256": "52779f26b5af1c663df3aebb2b074d2e2ad178f5b481b1d4d26571477f966a64"
+    },
+    {
+      "path": "tables/public_v0_5_core_label_metrics.csv",
+      "bytes": 2224,
+      "sha256": "589b09eac5130401cb7454dfd27c2e93716b379de3f6377189bb9d3d99cb0491"
+    },
+    {
+      "path": "tables/public_v0_5_future_goal_h10_summary.csv",
+      "bytes": 711,
+      "sha256": "f472306b79cba4b494fb6712e65b2395e5a5667ad4d016ad37a1d7537f292537"
+    }
+  ]
+}

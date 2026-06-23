@@ -1,0 +1,19 @@
+# Publication Abstract — Synathra Lab
+
+**Title:** SYNATHRA.Sport v0.5: Domain-Transfer Validation of a Frozen Event-Chain Risk Score in Football Event Streams
+
+**Author / profile:** Synathra Lab
+
+## Abstract
+
+SYNATHRA.Sport v0.5 presents a domain-transfer validation of a frozen event-chain risk score for football event data. The model is not designed to predict final match scores or bookmaker odds. Its purpose is to rank events and short event-chain contexts according to their proximity to future attacking danger, including goals, high-xG shots, and shots within a short event horizon.
+
+The validated operational score, `hybrid_score_v0_1`, combines calibrated event risk, hardened-chain membership, chain-delta context, and subtype reliability. In v0.5 the score is frozen and then evaluated without local reweighting across five validation groups: FIFA World Cup 2018, FIFA World Cup 2022, UEFA Euro 2024, Ligue 1 2021/2022, and Women's World Cup 2023. This design extends prior cross-competition validation into two additional transfer domains: club football and women's international football.
+
+For the primary label `future_goal_h10`, the frozen score retained strong ranking power across all five groups. The minimum top-10 lift across all validation groups was 4.6778; the minimum top-10 lift across the two new transfer domains was 4.6788. The result supports the claim that a frozen event-chain score can preserve meaningful event-risk ranking power across football domains with different competitive structure and gender context.
+
+The contribution is methodological and product-oriented. Methodologically, the experiment demonstrates a reproducible event → chain → risk → explanation architecture that can be transferred across football corpora. Product-wise, it supports a football event-chain explanation twin capable of highlighting why certain events matter before a visible shot or goal. The current result should be interpreted as domain-transfer evidence for event-risk ranking, not as a universal football model or a final-score prediction system.
+
+## Keywords
+
+event-chain modeling; football analytics; domain transfer; sports risk twin; explainable AI; event-risk ranking; Synathra

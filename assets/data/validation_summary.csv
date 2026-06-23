@@ -1,0 +1,6 @@
+group,domain_role,events,score,top10_lift,auc,status
+FIFA World Cup 2018,base / historical,TBD,hybrid_score_v0_1,TBD,TBD,replace from v0.5 package
+FIFA World Cup 2022,base / recent,TBD,hybrid_score_v0_1,TBD,TBD,replace from v0.5 package
+UEFA Euro 2024,transfer,TBD,hybrid_score_v0_1,TBD,TBD,replace from v0.5 package
+Ligue 1 2021/2022,club competition transfer,TBD,hybrid_score_v0_1,TBD,TBD,replace from v0.5 package
+Women’s World Cup 2023,women’s international transfer,TBD,hybrid_score_v0_1,TBD,TBD,replace from v0.5 package

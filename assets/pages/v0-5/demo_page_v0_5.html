@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>SYNATHRA.Sport v0.5 вЂ” Demo Page</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 34px; line-height: 1.55; color:#222; max-width: 1120px; }
+h1,h2,h3 { color:#0f2b46; }
+.hero { background:#eef6ff; border-left:5px solid #2e6f95; padding:18px 20px; margin-bottom:24px; }
+.step { border:1px solid #ddd; border-radius:9px; padding:14px 16px; margin:12px 0; background:#fafafa; }
+table { border-collapse:collapse; width:100%; font-size:13px; margin:14px 0 24px; }
+th,td { border:1px solid #bbb; padding:7px 8px; }
+th { background:#efefef; }
+.badge { display:inline-block; padding:4px 8px; border-radius:999px; background:#e8f4ff; border:1px solid #c7e4ff; margin-right:6px; }
+.code { background:#f4f4f4; padding:12px; font-family:monospace; white-space:pre-wrap; }
+</style>
+</head>
+<body>
+<h1>SYNATHRA.Sport v0.5 вЂ” Demo Page</h1>
+<div class="hero">
+<p><span class="badge">event-chain risk</span><span class="badge">domain transfer</span><span class="badge">frozen score</span></p>
+<p><strong>Demo claim:</strong> the same frozen score keeps ranking power across five football validation groups, including club football and women's international football.</p>
+</div>
+
+<h2>What the demo shows</h2>
+<div class="step"><strong>1. Event stream input</strong><br/>The model reads football event data and constructs event states, risk signals, and chain context.</div>
+<div class="step"><strong>2. Frozen score</strong><br/>Every event receives the same frozen <code>hybrid_score_v0_1</code>; no local weights are fitted for Ligue 1 or WWC 2023 in the v0.5 release claim.</div>
+<div class="step"><strong>3. Short-horizon validation</strong><br/>Events are ranked by score and checked against future goals, high-xG shots, and shots within the next 10 events.</div>
+<div class="step"><strong>4. Domain-transfer result</strong><br/>The score retains signal in menвЂ™s international tournaments, club football, and womenвЂ™s international football.</div>
+
+<h2>Primary metric: future_goal_h10</h2>
+<table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>group_key</th>
+      <th>domain_shift_type</th>
+      <th>target_role</th>
+      <th>observations</th>
+      <th>positives</th>
+      <th>top10_lift</th>
+      <th>roc_auc</th>
+      <th>average_precision</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FIFA World Cup 2018</td>
+      <td>same_family_cross_season</td>
+      <td>base_v0_4</td>
+      <td>71838</td>
+      <td>590</td>
+      <td>4.677836</td>
+      <td>0.741665</td>
+      <td>0.098395</td>
+    </tr>
+    <tr>
+      <td>FIFA World Cup 2022</td>
+      <td>same_family_cross_season</td>
+      <td>base_v0_4</td>
+      <td>234637</td>
+      <td>1808</td>
+      <td>4.977812</td>
+      <td>0.748289</td>
+      <td>0.111904</td>
+    </tr>
+    <tr>
+      <td>Ligue 1 2021/2022</td>
+      <td>club_transfer</td>
+      <td>v0_5_candidate</td>
+      <td>101766</td>
+      <td>810</td>
+      <td>4.678828</td>
+      <td>0.734050</td>
+      <td>0.096429</td>
+    </tr>
+    <tr>
+      <td>UEFA Euro 2024</td>
+      <td>cross_competition_mens_international</td>
+      <td>base_v0_4</td>
+      <td>187924</td>
+      <td>1140</td>
+      <td>4.763006</td>
+      <td>0.756462</td>
+      <td>0.069080</td>
+    </tr>
+    <tr>
+      <td>Women's World Cup 2023</td>
+      <td>gender_transfer</td>
+      <td>v0_5_candidate</td>
+      <td>226118</td>
+      <td>1664</td>
+      <td>4.843707</td>
+      <td>0.729025</td>
+      <td>0.089754</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>How to read top10_lift</h2>
+<p>A <code>top10_lift</code> of 4.0 means that events in the highest-scored 10% contain about four times the future-goal rate of the average event population.</p>
+
+<h2>Demo narrative</h2>
+<div class="code">event в†’ chain context в†’ frozen hybrid score в†’ short-horizon danger ranking в†’ explanation</div>
+
+<h2>Boundary</h2>
+<p>This demo does not forecast the final score of a match. It identifies and explains event-chain risk before future danger appears.</p>
+
+</body>
+</html>
+

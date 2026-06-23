@@ -1,0 +1,308 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Synathra.Sport v0.5 Demo вЂ” Event-Chain Risk Before Visible Danger</title>
+  <meta name="description" content="Static demo page for Synathra.Sport v0.5 showing future-goal H10 ranking evidence, top10 lift, ROC AUC and the event-chain risk interpretation boundary.">
+  <link rel="canonical" href="https://synathra.com/en/sport/v0-5/demo/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Synathra.Sport v0.5 Demo вЂ” Event-Chain Risk Before Visible Danger">
+  <meta property="og:description" content="Synathra.Sport v0.5 demo page showing how a frozen event-chain score ranks short-horizon danger across five validation groups.">
+  <meta property="og:url" content="https://synathra.com/en/sport/v0-5/demo/">
+  <meta property="og:site_name" content="Synathra Lab">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../../../../assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../../../../index.html">
+        <span class="brand-mark">S</span>
+        <span>Synathra Lab</span>
+      </a>
+      <div class="nav-links">
+        <a href="../../../../en/sport/v0-5/index.html">Sport v0.5</a>
+        <a href="../../../../en/sport/v0-5/validation/index.html">Validation</a>
+        <a href="../../../../en/sport/v0-5/demo/index.html" aria-current="page">Demo</a>
+        <a href="../../../../en/sport/v0-5/docs/index.html">Docs</a>
+        <a href="../../../../en/about/index.html">About</a>
+        <a href="../../../../en/contact/index.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero compact">
+      <p class="eyebrow">Demo</p>
+      <h1>Event-chain risk before visible danger.</h1>
+      <p class="lead">
+        This demo translates the v0.5 public package into the Synathra Lab site format:
+        a frozen <strong>hybrid_score_v0_1</strong> ranks football events and is checked
+        against future goals within the next 10 events.
+      </p>
+      <div class="cta-row">
+        <a class="button primary" href="../validation/index.html">See validation</a>
+        <a class="button" href="../../../../assets/data/v0-5/public_v0_5_future_goal_h10_summary.csv">Download H10 CSV</a>
+        <a class="button secondary" href="../../../../assets/pages/v0-5/demo_page_v0_5.html">Open original v0.5 demo</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid four">
+        <article class="card">
+          <div class="metric">5</div>
+          <div class="metric-label">validation groups</div>
+        </article>
+        <article class="card">
+          <div class="metric">2</div>
+          <div class="metric-label">v0.5 transfer candidates</div>
+        </article>
+        <article class="card">
+          <div class="metric">4.678вЂ“4.978</div>
+          <div class="metric-label">top10_lift range</div>
+        </article>
+        <article class="card">
+          <div class="metric">0.729вЂ“0.756</div>
+          <div class="metric-label">ROC AUC range</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section narrow">
+      <p class="eyebrow">Demo logic</p>
+      <h2>What the demo shows.</h2>
+      <p class="muted">
+        The demo does not forecast final match scores. It shows whether the same frozen
+        event-chain risk score ranks short-horizon danger across related football domains.
+      </p>
+      <div class="chain">
+        <span>event stream</span>
+        <span>в†’</span>
+        <span>chain context</span>
+        <span>в†’</span>
+        <span>frozen score</span>
+        <span>в†’</span>
+        <span>future_goal_h10</span>
+        <span>в†’</span>
+        <span>risk explanation</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Primary metric</p>
+        <h2>Future-goal H10 ranking evidence.</h2>
+        <p>
+          The primary public demo metric is <code>future_goal_h10</code>. A
+          <code>top10_lift</code> near 5 means that the highest-scored 10% of events
+          contains roughly five times the future-goal rate of the average event population.
+        </p>
+      </div>
+
+      <div class="grid two">
+
+        <article class="card">
+          <span class="badge">base validation family</span>
+          <h3>FIFA World Cup 2018</h3>
+          <p class="muted">Domain shift: <strong>same_family_cross_season</strong></p>
+          <p>
+            <strong>top10_lift:</strong> 4.678<br>
+            <strong>ROC AUC:</strong> 0.742<br>
+            <strong>Events / positives:</strong> 71,838 / 590
+          </p>
+          <p>
+            Interpretation: the highest-scored 10% of events contain about
+            <strong>4.678Г—</strong> the future-goal rate of the average event population.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="badge">base validation family</span>
+          <h3>FIFA World Cup 2022</h3>
+          <p class="muted">Domain shift: <strong>same_family_cross_season</strong></p>
+          <p>
+            <strong>top10_lift:</strong> 4.978<br>
+            <strong>ROC AUC:</strong> 0.748<br>
+            <strong>Events / positives:</strong> 234,637 / 1,808
+          </p>
+          <p>
+            Interpretation: the highest-scored 10% of events contain about
+            <strong>4.978Г—</strong> the future-goal rate of the average event population.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="badge">v0.5 transfer candidate</span>
+          <h3>Ligue 1 2021/2022</h3>
+          <p class="muted">Domain shift: <strong>club_transfer</strong></p>
+          <p>
+            <strong>top10_lift:</strong> 4.679<br>
+            <strong>ROC AUC:</strong> 0.734<br>
+            <strong>Events / positives:</strong> 101,766 / 810
+          </p>
+          <p>
+            Interpretation: the highest-scored 10% of events contain about
+            <strong>4.679Г—</strong> the future-goal rate of the average event population.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="badge">base validation family</span>
+          <h3>UEFA Euro 2024</h3>
+          <p class="muted">Domain shift: <strong>cross_competition_mens_international</strong></p>
+          <p>
+            <strong>top10_lift:</strong> 4.763<br>
+            <strong>ROC AUC:</strong> 0.756<br>
+            <strong>Events / positives:</strong> 187,924 / 1,140
+          </p>
+          <p>
+            Interpretation: the highest-scored 10% of events contain about
+            <strong>4.763Г—</strong> the future-goal rate of the average event population.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="badge">v0.5 transfer candidate</span>
+          <h3>Women&#x27;s World Cup 2023</h3>
+          <p class="muted">Domain shift: <strong>gender_transfer</strong></p>
+          <p>
+            <strong>top10_lift:</strong> 4.844<br>
+            <strong>ROC AUC:</strong> 0.729<br>
+            <strong>Events / positives:</strong> 226,118 / 1,664
+          </p>
+          <p>
+            Interpretation: the highest-scored 10% of events contain about
+            <strong>4.844Г—</strong> the future-goal rate of the average event population.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Data table</p>
+        <h2>Public v0.5 future goal H10 summary.</h2>
+        <p>
+          Source:
+          <a href="../../../../assets/data/v0-5/public_v0_5_future_goal_h10_summary.csv">
+            public_v0_5_future_goal_h10_summary.csv
+          </a>.
+          Total observations: <strong>822,283</strong>;
+          positives: <strong>6,012</strong>.
+        </p>
+      </div>
+
+      <div class="table-scroll" role="region" aria-label="Future-goal H10 summary table" tabindex="0">
+        <table>
+          <thead>
+            <tr>
+              <th>Group</th>
+              <th>Domain shift</th>
+              <th>Target role</th>
+              <th>Observations</th>
+              <th>Positives</th>
+              <th>top10_lift</th>
+              <th>ROC AUC</th>
+              <th>Average precision</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <td>FIFA World Cup 2018</td>
+              <td>same_family_cross_season</td>
+              <td>base_v0_4</td>
+              <td>71,838</td>
+              <td>590</td>
+              <td>4.677836</td>
+              <td>0.741665</td>
+              <td>0.098395</td>
+            </tr>
+
+            <tr>
+              <td>FIFA World Cup 2022</td>
+              <td>same_family_cross_season</td>
+              <td>base_v0_4</td>
+              <td>234,637</td>
+              <td>1,808</td>
+              <td>4.977812</td>
+              <td>0.748289</td>
+              <td>0.111904</td>
+            </tr>
+
+            <tr>
+              <td>Ligue 1 2021/2022</td>
+              <td>club_transfer</td>
+              <td>v0_5_candidate</td>
+              <td>101,766</td>
+              <td>810</td>
+              <td>4.678828</td>
+              <td>0.734050</td>
+              <td>0.096429</td>
+            </tr>
+
+            <tr>
+              <td>UEFA Euro 2024</td>
+              <td>cross_competition_mens_international</td>
+              <td>base_v0_4</td>
+              <td>187,924</td>
+              <td>1,140</td>
+              <td>4.763006</td>
+              <td>0.756462</td>
+              <td>0.069080</td>
+            </tr>
+
+            <tr>
+              <td>Women&#x27;s World Cup 2023</td>
+              <td>gender_transfer</td>
+              <td>v0_5_candidate</td>
+              <td>226,118</td>
+              <td>1,664</td>
+              <td>4.843707</td>
+              <td>0.729025</td>
+              <td>0.089754</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="note">
+        Mobile UX rule: the evidence is summarized first, while the wide technical table
+        remains available inside a horizontal scroll container.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="cta-panel">
+        <h2>Boundary of interpretation</h2>
+        <p>
+          Synathra.Sport v0.5 is not a bookmaker model and does not predict final scores.
+          It identifies and explains event-chain risk before future danger appears.
+        </p>
+        <p>
+          <a class="button" href="../validation/index.html">Open validation summary</a>
+          <a class="button secondary" href="../docs/index.html">Open public documents</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Synathra Lab</strong><br>
+        <span>Computational event-chain models for risk, explanation and domain transfer.</span>
+      </div>
+      <div class="footer-links">
+        <a href="../../../../en/contact/index.html">Feedback</a>
+        <a href="../../../../en/sport/v0-5/docs/index.html">Documents</a>
+        <a href="../../../../en/sport/v0-5/validation/index.html">Validation</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+

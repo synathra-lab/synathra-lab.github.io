@@ -1,0 +1,4 @@
+event_id,validation_group,event_type,hybrid_score_v0_1,chain_explanation,later_danger_observed,source_note
+DEMO-001,TBD,high_pressure_defensive_sequence,TBD,Repeated pressure compresses decision time and increases dangerous turnover risk.,TBD,placeholder
+DEMO-002,TBD,transition_exposure,TBD,Advanced possession loss opens a short path from event to shot danger.,TBD,placeholder
+DEMO-003,TBD,set_piece_instability,TBD,Local pressure accumulates across restarts and activates risk chain.,TBD,placeholder

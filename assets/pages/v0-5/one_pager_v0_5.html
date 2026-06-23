@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>SYNATHRA.Sport v0.5 вЂ” One-Pager</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 34px; line-height: 1.55; color: #222; max-width: 1100px; }
+h1,h2,h3 { color: #0f2b46; }
+.hero { background:#eef6ff; border-left:5px solid #2e6f95; padding:18px 20px; margin: 0 0 22px; }
+.grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; margin:18px 0 26px; }
+.card { border:1px solid #ddd; border-radius:9px; padding:14px; background:#fafafa; }
+.card .v { font-size:24px; font-weight:bold; color:#0f2b46; }
+table { border-collapse:collapse; width:100%; font-size:13px; margin:14px 0 24px; }
+th,td { border:1px solid #bbb; padding:7px 8px; }
+th { background:#efefef; }
+.code { background:#f4f4f4; padding:12px; font-family:monospace; white-space:pre-wrap; }
+.warn { background:#fff8e8; border-left:4px solid #c9902e; padding:12px 14px; }
+</style>
+</head>
+<body>
+<h1>SYNATHRA.Sport v0.5</h1>
+<div class="hero">
+<h2>Domain-Transfer Validated Football Event-Chain Risk Twin</h2>
+<p><strong>Decision:</strong> PASS_V0_5_DOMAIN_TRANSFER</p>
+<p>SYNATHRA.Sport ranks football events and event chains by proximity to future danger. It is an event-risk and explanation layer, not a final-score prediction model.</p>
+</div>
+
+<div class="grid">
+<div class="card"><div>Validation groups</div><div class="v">5</div></div>
+<div class="card"><div>New domains</div><div class="v">2</div></div>
+<div class="card"><div>Min goal lift</div><div class="v">4.68</div></div>
+<div class="card"><div>Min new-domain lift</div><div class="v">4.68</div></div>
+</div>
+
+<h2>Frozen score</h2>
+<div class="code">hybrid_score_v0_1_raw =
+  0.50 * event_risk_calibrated
++ 0.05 * inside_hardened_chain
++ 0.10 * chain_delta_context
++ 0.35 * subtype_reliability
+
+hybrid_score_v0_1 = normalized deployment score in [0, 1]</div>
+
+<h2>Primary validation result: future_goal_h10</h2>
+<table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>group_key</th>
+      <th>domain_shift_type</th>
+      <th>target_role</th>
+      <th>observations</th>
+      <th>positives</th>
+      <th>top10_lift</th>
+      <th>roc_auc</th>
+      <th>average_precision</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FIFA World Cup 2018</td>
+      <td>same_family_cross_season</td>
+      <td>base_v0_4</td>
+      <td>71838</td>
+      <td>590</td>
+      <td>4.677836</td>
+      <td>0.741665</td>
+      <td>0.098395</td>
+    </tr>
+    <tr>
+      <td>FIFA World Cup 2022</td>
+      <td>same_family_cross_season</td>
+      <td>base_v0_4</td>
+      <td>234637</td>
+      <td>1808</td>
+      <td>4.977812</td>
+      <td>0.748289</td>
+      <td>0.111904</td>
+    </tr>
+    <tr>
+      <td>Ligue 1 2021/2022</td>
+      <td>club_transfer</td>
+      <td>v0_5_candidate</td>
+      <td>101766</td>
+      <td>810</td>
+      <td>4.678828</td>
+      <td>0.734050</td>
+      <td>0.096429</td>
+    </tr>
+    <tr>
+      <td>UEFA Euro 2024</td>
+      <td>cross_competition_mens_international</td>
+      <td>base_v0_4</td>
+      <td>187924</td>
+      <td>1140</td>
+      <td>4.763006</td>
+      <td>0.756462</td>
+      <td>0.069080</td>
+    </tr>
+    <tr>
+      <td>Women's World Cup 2023</td>
+      <td>gender_transfer</td>
+      <td>v0_5_candidate</td>
+      <td>226118</td>
+      <td>1664</td>
+      <td>4.843707</td>
+      <td>0.729025</td>
+      <td>0.089754</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Correct product claim</h2>
+<p>Frozen <code>hybrid_score_v0_1</code> retains event-risk ranking power across men's international tournaments, a club competition, and a women's international tournament.</p>
+
+<div class="warn">
+<strong>Boundary:</strong> This is not a bookmaker odds model, not a final-score prediction model, and not a universal football model.
+</div>
+
+</body>
+</html>
+
