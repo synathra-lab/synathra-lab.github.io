@@ -1,0 +1,22 @@
+﻿{
+  "schema_id": "synathra_feedback_schema_v0_1",
+  "purpose": "Collect structured public feedback for Synathra Lab public releases.",
+  "fields": [
+    {"name": "name", "type": "string", "required": false},
+    {"name": "email", "type": "email", "required": false},
+    {"name": "role", "type": "string", "required": true},
+    {"name": "organization_type", "type": "string", "required": false},
+    {"name": "domain_interest", "type": "enum", "values": ["Sport", "Finance", "Contract", "Insurance", "Banking", "Stablecoin/Crypto", "Methodology", "Other"], "required": true},
+    {"name": "what_is_clear", "type": "text", "required": false},
+    {"name": "what_is_unclear", "type": "text", "required": false},
+    {"name": "what_would_make_this_useful", "type": "text", "required": true},
+    {"name": "what_would_you_need_to_trust_the_model", "type": "text", "required": true},
+    {"name": "would_you_like_a_demo_call", "type": "boolean", "required": false},
+    {"name": "message", "type": "text", "required": false}
+  ],
+  "notes": [
+    "Do not collect sensitive personal data.",
+    "Use feedback to update roadmap, changelog and next release hypotheses.",
+    "SITE-0.5 uses an external form provider; no backend is included in the static GitHub Pages site."
+  ]
+}

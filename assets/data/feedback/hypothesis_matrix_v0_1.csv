@@ -1,0 +1,6 @@
+﻿hypothesis_id,hypothesis,primary_page,channel,expected_signal,decision_rule,next_action
+H1,Visitors understand what Synathra does within 60 seconds,/,site,clear feedback or click to Sport v0.5,if repeated confusion then rewrite homepage,revise hero and explanation
+H2,Visitors trust v0.5 as reproducible validation evidence,/en/sport/v0-5/validation/,site,validation page views CSV downloads technical questions,if trust questions repeat then add methodology note,expand validation explanation
+H3,Football as fast economy analogy is useful,/en/sport/v0-5/demo/,Medium/Pinterest,comments saves highlights referring to analogy,if misleading then soften analogy,reframe sport as proof domain
+H4,Best early audience can be identified,/en/contact/,site,role and organization patterns in feedback,if one audience dominates then create targeted landing page,segment product pages
+H5,Next domain interest can be prioritized,/en/contact/,site,domain_interest choices,if Finance Contract or Crypto dominates then update roadmap,prepare next public page
