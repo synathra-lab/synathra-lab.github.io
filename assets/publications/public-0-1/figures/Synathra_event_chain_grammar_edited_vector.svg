@@ -1,0 +1,105 @@
+<svg width="1672" height="941" viewBox="0 0 1672 941" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<title id="title">Figure 1. Synathra event-chain grammar</title>
+<desc id="desc">From observed events to explainable risk across domains. Method chain, proof case and transfer domains.</desc>
+<defs>
+  <radialGradient id="bgGlow" cx="50%" cy="26%" r="80%">
+    <stop offset="0%" stop-color="#0e2530" stop-opacity="0.62"/>
+    <stop offset="45%" stop-color="#07131f" stop-opacity="0.78"/>
+    <stop offset="100%" stop-color="#020710" stop-opacity="1"/>
+  </radialGradient>
+  <linearGradient id="panelGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#061c1f" stop-opacity="0.96"/>
+    <stop offset="54%" stop-color="#071822" stop-opacity="0.97"/>
+    <stop offset="100%" stop-color="#07101a" stop-opacity="0.98"/>
+  </linearGradient>
+  <linearGradient id="proofGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#072828" stop-opacity="0.94"/>
+    <stop offset="48%" stop-color="#092831" stop-opacity="0.92"/>
+    <stop offset="100%" stop-color="#06111d" stop-opacity="0.96"/>
+  </linearGradient>
+  <filter id="softGlow" x="-35%" y="-35%" width="170%" height="170%">
+    <feGaussianBlur stdDeviation="4" result="blur"/>
+    <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.23 0 0 0 0 1 0 0 0 0 0.70 0 0 0 0.70 0" result="glow"/>
+    <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="textShadow" x="-10%" y="-10%" width="120%" height="120%">
+    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.75"/>
+  </filter>
+  <style><![CDATA[
+    .bg { fill: url(#bgGlow); }
+    .line { stroke: #1a2a36; stroke-width: 2; opacity: .85; }
+    .box, .domainBox { fill: url(#panelGrad); stroke: #94f4c4; stroke-width: 2.4; filter: url(#softGlow); }
+    .proofPanel { fill: url(#proofGrad); stroke: #94f4c4; stroke-width: 2.0; filter: url(#softGlow); }
+    .pill { fill: rgba(6,20,28,.84); stroke: #94f4c4; stroke-width: 1.5; }
+    .boundaryBox { fill: rgba(4,14,22,.86); stroke: #9cf4c4; stroke-width: 1.6; }
+    text { font-family: "Segoe UI", "Inter", Arial, sans-serif; fill: #f1f5f8; filter: url(#textShadow); }
+    .title { font-size: 64px; font-weight: 800; letter-spacing: .2px; }
+    .subtitle { font-size: 34px; font-weight: 400; fill: #c9c8c8; letter-spacing: .3px; }
+    .label { font-size: 28px; font-weight: 800; fill: #8ff0bd; letter-spacing: 2px; }
+    .nodeText { font-size: 32px; font-weight: 500; fill: #ffffff; }
+    .proofLabel { font-size: 32px; font-weight: 700; fill: #8ff0bd; }
+    .proofTitle { font-size: 58px; font-weight: 800; fill: #ffffff; }
+    .pillText { font-size: 28px; font-weight: 500; fill: #eafdf4; }
+    .proofNote { font-size: 31px; font-weight: 400; fill: #f5f5f5; }
+    .domainText { font-size: 31px; font-weight: 700; fill: #ffffff; }
+    .boundaryLabel { font-size: 32px; font-weight: 800; fill: #89efb9; }
+    .boundaryText { font-size: 31px; font-weight: 400; fill: #ffffff; }
+    .footer { font-size: 27px; fill: #c9c9c9; font-weight: 400; }
+    .arrow { stroke: #78e8b2; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; fill: none; filter: url(#softGlow); }
+    .dots { stroke: #2d6074; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 0.1 14; opacity: .9; }
+  ]]></style>
+</defs>
+<rect class="bg" width="1672" height="941"/>
+
+<line x1="0" y1="338" x2="1672" y2="338" class="line"/>
+<line x1="0" y1="608" x2="1672" y2="608" class="line"/>
+<line x1="0" y1="768" x2="1672" y2="768" class="line"/>
+<text x="836.0" y="86" class="title" text-anchor="middle" >Figure 1. Synathra event-chain grammar</text>
+<text x="836.0" y="136" class="subtitle" text-anchor="middle" >From observed events to explainable risk across domains</text>
+<text x="44" y="232" class="label" text-anchor="start" ><tspan x="44" dy="0">1. METHOD</tspan><tspan x="44" dy="1.25em">CHAIN</tspan></text>
+<line x1="218" y1="189" x2="218" y2="300" class="dots"/>
+<text x="44" y="441" class="label" text-anchor="start" ><tspan x="44" dy="0">2. PROOF</tspan><tspan x="44" dy="1.25em">CASE</tspan></text>
+<line x1="218" y1="370" x2="218" y2="578" class="dots"/>
+<text x="44" y="677" class="label" text-anchor="start" ><tspan x="44" dy="0">3. TRANSFER</tspan><tspan x="44" dy="1.25em">DOMAINS</tspan></text>
+<rect x="261" y="181" width="204" height="132" rx="14" class="box" />
+<text x="363.0" y="234" class="nodeText" text-anchor="middle" ><tspan x="363.0" dy="0">Observed</tspan><tspan x="363.0" dy="1.25em">events</tspan></text>
+<rect x="510" y="181" width="191" height="132" rx="14" class="box" />
+<text x="605.5" y="234" class="nodeText" text-anchor="middle" ><tspan x="605.5" dy="0">Chain</tspan><tspan x="605.5" dy="1.25em">activation</tspan></text>
+<rect x="756" y="181" width="176" height="132" rx="14" class="box" />
+<text x="844.0" y="234" class="nodeText" text-anchor="middle" ><tspan x="844.0" dy="0">Risk</tspan><tspan x="844.0" dy="1.25em">score</tspan></text>
+<rect x="982" y="181" width="171" height="132" rx="14" class="box" />
+<text x="1067.5" y="259" class="nodeText" text-anchor="middle" >Ranking</text>
+<rect x="1199" y="181" width="172" height="132" rx="14" class="box" />
+<text x="1285.0" y="259" class="nodeText" text-anchor="middle" >Validation</text>
+<rect x="1416" y="181" width="202" height="132" rx="14" class="box" />
+<text x="1517.0" y="259" class="nodeText" text-anchor="middle" >Explanation</text>
+<path class="arrow" d="M471 246 L484 246 M470 229 L488 246 L470 263" />
+<path class="arrow" d="M708 246 L730 246 M716 229 L734 246 L716 263" />
+<path class="arrow" d="M939 246 L956 246 M942 229 L960 246 L942 263" />
+<path class="arrow" d="M1160 246 L1172 246 M1158 229 L1176 246 L1158 263" />
+<path class="arrow" d="M1378 246 L1390 246 M1376 229 L1394 246 L1376 263" />
+<rect x="261" y="360" width="1190" height="232" rx="12" class="proofPanel" />
+<text x="836.0" y="401" class="proofLabel" text-anchor="middle" >Public proof case</text>
+<text x="836.0" y="459" class="proofTitle" text-anchor="middle" >Synathra.Sport v0.5</text>
+<rect x="450" y="482" width="285" height="44" rx="7" class="pill" />
+<text x="592.5" y="513" class="pillText" text-anchor="middle" >5 validation groups</text>
+<rect x="757" y="482" width="262" height="44" rx="7" class="pill" />
+<text x="888" y="513" class="pillText" text-anchor="middle" >2 transfer domains</text>
+<rect x="1058" y="482" width="201" height="44" rx="7" class="pill" />
+<text x="1158.5" y="513" class="pillText" text-anchor="middle" >Frozen score</text>
+<text x="836.0" y="568" class="proofNote" text-anchor="middle" >Football is the first public proof case.</text>
+<rect x="261" y="630" width="214" height="117" rx="12" class="domainBox" />
+<text x="368.0" y="703" class="domainText" text-anchor="middle" >Finance</text>
+<rect x="514" y="630" width="247" height="117" rx="12" class="domainBox" />
+<text x="637.5" y="703" class="domainText" text-anchor="middle" >Contract risk</text>
+<rect x="802" y="630" width="228" height="117" rx="12" class="domainBox" />
+<text x="916.0" y="703" class="domainText" text-anchor="middle" >Insurance</text>
+<rect x="1070" y="630" width="214" height="117" rx="12" class="domainBox" />
+<text x="1177.0" y="703" class="domainText" text-anchor="middle" >Banking</text>
+<rect x="1325" y="630" width="268" height="117" rx="12" class="domainBox" />
+<text x="1459.0" y="703" class="domainText" text-anchor="middle" >Stablecoin risk</text>
+<rect x="79" y="790" width="1510" height="72" rx="8" class="boundaryBox" />
+<text x="225" y="837" class="boundaryLabel" text-anchor="start" >Boundary:</text>
+<text x="391" y="837" class="boundaryText" text-anchor="start" >Not a bookmaker model. Not a final-score predictor. Explainable risk ranking.</text>
+<text x="836.0" y="904" class="footer" text-anchor="middle" >Events form chains. Chains activate risk. Risk can be validated across domains.</text>
+</svg>
