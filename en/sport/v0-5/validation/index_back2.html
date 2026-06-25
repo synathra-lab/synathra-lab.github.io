@@ -1,0 +1,437 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Synathra.Sport v0.5 Validation Summary</title>
+  <meta name="description" content="Validation summary for Synathra.Sport v0.5 domain-transfer event-chain risk release based on public v0.5 core label metrics and future-goal H10 summary tables.">
+  <link rel="canonical" href="https://synathra.com/en/sport/v0-5/validation/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Synathra.Sport v0.5 Validation Summary">
+  <meta property="og:description" content="Domain-transfer validation summary for Synathra.Sport v0.5 using public v0.5 validation metrics.">
+  <meta property="og:url" content="https://synathra.com/en/sport/v0-5/validation/">
+  <meta property="og:site_name" content="Synathra Lab">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../../../../assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../../../../index.html"><span class="brand-mark">S</span><span>Synathra Lab</span></a>
+      <div class="nav-links">
+          <a href="../../../../en/sport/v0-5/index.html">Sport v0.5</a>
+          <a href="../../../../en/sport/v0-5/validation/index.html" aria-current="page">Validation</a>
+          <a href="../../../../en/sport/v0-5/demo/index.html">Demo</a>
+          <a href="../../../../en/sport/v0-5/docs/index.html">Docs</a>
+          <a href="../../../../en/about/index.html">About</a>
+          <a href="../../../../en/contact/index.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero compact">
+      <p class="eyebrow">Validation summary</p>
+      <h1>Domain-transfer validation snapshot.</h1>
+      <p class="lead">
+        This page replaces the SITE-0.2 draft validation block with the real
+        Synathra.Sport v0.5 public CSV assets:
+        <code>public_v0_5_core_label_metrics.csv</code> and
+        <code>public_v0_5_future_goal_h10_summary.csv</code>.
+      </p>
+      <div class="cta-row">
+        <a class="button primary" href="../docs/index.html">Open documents</a>
+        <a class="button" href="../../../../assets/data/v0-5/public_v0_5_core_label_metrics.csv">Download core metrics CSV</a>
+        <a class="button" href="../../../../assets/data/v0-5/public_v0_5_future_goal_h10_summary.csv">Download H10 summary CSV</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid four">
+        <article class="card">
+          <div class="metric">5</div>
+          <div class="metric-label">validation groups</div>
+        </article>
+        <article class="card">
+          <div class="metric">3</div>
+          <div class="metric-label">public labels</div>
+        </article>
+        <article class="card">
+          <div class="metric">2</div>
+          <div class="metric-label">v0.5 candidate transfer groups</div>
+        </article>
+        <article class="card">
+          <div class="metric">4.678вЂ“4.978</div>
+          <div class="metric-label">future_goal_h10 top10_lift range</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid two">
+        <article class="card">
+          <h3>Future-goal H10 ROC AUC range</h3>
+          <p class="metric-inline">0.729вЂ“0.756</p>
+          <p>
+            The future-goal H10 summary contains 5 group-level rows,
+            822 283 observations and 6 012 positive cases.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Core label metric coverage</h3>
+          <p class="metric-inline">15 rows</p>
+          <p>
+            The core metrics table covers 3 public labels across 5 validation groups.
+            The full core top10_lift range is 2.925вЂ“4.978; the full ROC AUC range is 0.657вЂ“0.756.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Validation design</p>
+        <h2>Groups and labels included in the public v0.5 evidence.</h2>
+        <p>
+          The public validation evidence covers tournament-level and transfer-domain checks.
+          The <code>target_role</code> field separates the base v0.4 reference role from the v0.5 candidate transfer role.
+        </p>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <h3>Validation groups</h3>
+          <ul>
+            <li>FIFA World Cup 2018</li>
+<li>FIFA World Cup 2022</li>
+<li>Ligue 1 2021/2022</li>
+<li>UEFA Euro 2024</li>
+<li>Women&#x27;s World Cup 2023</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Public labels</h3>
+          <ul>
+            <li><code>future_goal_h10</code></li>
+<li><code>future_high_xg_shot_h10</code></li>
+<li><code>future_shot_h10</code></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Primary validation table</p>
+        <h2>Future-goal H10 summary.</h2>
+        <p>
+          Source:
+          <a href="../../../../assets/data/v0-5/public_v0_5_future_goal_h10_summary.csv">
+            public_v0_5_future_goal_h10_summary.csv
+          </a>.
+          This is the compact five-group summary used for the main public validation snapshot.
+        </p>
+      </div>
+      <div class="table-scroll" role="region" aria-label="Validation data table" tabindex="0">
+<table>
+<thead><tr>
+<th>Group</th>
+<th>Domain shift</th>
+<th>Target role</th>
+<th>Observations</th>
+<th>Positives</th>
+<th>top10_lift</th>
+<th>ROC AUC</th>
+<th>Average precision</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FIFA World Cup 2018</td>
+<td>same_family_cross_season</td>
+<td>base_v0_4</td>
+<td>71 838</td>
+<td>590</td>
+<td>4.678</td>
+<td>0.742</td>
+<td>0.098</td>
+</tr>
+<tr>
+<td>FIFA World Cup 2022</td>
+<td>same_family_cross_season</td>
+<td>base_v0_4</td>
+<td>234 637</td>
+<td>1 808</td>
+<td>4.978</td>
+<td>0.748</td>
+<td>0.112</td>
+</tr>
+<tr>
+<td>Ligue 1 2021/2022</td>
+<td>club_transfer</td>
+<td>v0_5_candidate</td>
+<td>101 766</td>
+<td>810</td>
+<td>4.679</td>
+<td>0.734</td>
+<td>0.096</td>
+</tr>
+<tr>
+<td>UEFA Euro 2024</td>
+<td>cross_competition_mens_international</td>
+<td>base_v0_4</td>
+<td>187 924</td>
+<td>1 140</td>
+<td>4.763</td>
+<td>0.756</td>
+<td>0.069</td>
+</tr>
+<tr>
+<td>Women&#x27;s World Cup 2023</td>
+<td>gender_transfer</td>
+<td>v0_5_candidate</td>
+<td>226 118</td>
+<td>1 664</td>
+<td>4.844</td>
+<td>0.729</td>
+<td>0.090</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Full public metric table</p>
+        <h2>Core label metrics.</h2>
+        <p>
+          Source:
+          <a href="../../../../assets/data/v0-5/public_v0_5_core_label_metrics.csv">
+            public_v0_5_core_label_metrics.csv
+          </a>.
+          This table preserves the public v0.5 label-level evidence across all released labels.
+        </p>
+      </div>
+      <div class="table-scroll" role="region" aria-label="Validation data table" tabindex="0">
+<table>
+<thead><tr>
+<th>Group</th>
+<th>Domain shift</th>
+<th>Target role</th>
+<th>Label</th>
+<th>Observations</th>
+<th>Positives</th>
+<th>top10_lift</th>
+<th>ROC AUC</th>
+<th>Average precision</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FIFA World Cup 2018</td>
+<td>same_family_cross_season</td>
+<td>base_v0_4</td>
+<td>future_goal_h10</td>
+<td>71 838</td>
+<td>590</td>
+<td>4.678</td>
+<td>0.742</td>
+<td>0.098</td>
+</tr>
+<tr>
+<td>FIFA World Cup 2022</td>
+<td>same_family_cross_season</td>
+<td>base_v0_4</td>
+<td>future_goal_h10</td>
+<td>234 637</td>
+<td>1 808</td>
+<td>4.978</td>
+<td>0.748</td>
+<td>0.112</td>
+</tr>
+<tr>
+<td>Ligue 1 2021/2022</td>
+<td>club_transfer</td>
+<td>v0_5_candidate</td>
+<td>future_goal_h10</td>
+<td>101 766</td>
+<td>810</td>
+<td>4.679</td>
+<td>0.734</td>
+<td>0.096</td>
+</tr>
+<tr>
+<td>UEFA Euro 2024</td>
+<td>cross_competition_mens_international</td>
+<td>base_v0_4</td>
+<td>future_goal_h10</td>
+<td>187 924</td>
+<td>1 140</td>
+<td>4.763</td>
+<td>0.756</td>
+<td>0.069</td>
+</tr>
+<tr>
+<td>Women&#x27;s World Cup 2023</td>
+<td>gender_transfer</td>
+<td>v0_5_candidate</td>
+<td>future_goal_h10</td>
+<td>226 118</td>
+<td>1 664</td>
+<td>4.844</td>
+<td>0.729</td>
+<td>0.090</td>
+</tr>
+<tr>
+<td>FIFA World Cup 2018</td>
+<td>same_family_cross_season</td>
+<td>base_v0_4</td>
+<td>future_high_xg_shot_h10</td>
+<td>71 838</td>
+<td>1 554</td>
+<td>3.616</td>
+<td>0.681</td>
+<td>0.116</td>
+</tr>
+<tr>
+<td>FIFA World Cup 2022</td>
+<td>same_family_cross_season</td>
+<td>base_v0_4</td>
+<td>future_high_xg_shot_h10</td>
+<td>234 637</td>
+<td>3 986</td>
+<td>4.077</td>
+<td>0.710</td>
+<td>0.141</td>
+</tr>
+<tr>
+<td>Ligue 1 2021/2022</td>
+<td>club_transfer</td>
+<td>v0_5_candidate</td>
+<td>future_high_xg_shot_h10</td>
+<td>101 766</td>
+<td>2 035</td>
+<td>3.843</td>
+<td>0.689</td>
+<td>0.132</td>
+</tr>
+<tr>
+<td>UEFA Euro 2024</td>
+<td>cross_competition_mens_international</td>
+<td>base_v0_4</td>
+<td>future_high_xg_shot_h10</td>
+<td>187 924</td>
+<td>3 386</td>
+<td>4.114</td>
+<td>0.712</td>
+<td>0.126</td>
+</tr>
+<tr>
+<td>Women&#x27;s World Cup 2023</td>
+<td>gender_transfer</td>
+<td>v0_5_candidate</td>
+<td>future_high_xg_shot_h10</td>
+<td>226 118</td>
+<td>4 014</td>
+<td>4.076</td>
+<td>0.704</td>
+<td>0.141</td>
+</tr>
+<tr>
+<td>FIFA World Cup 2018</td>
+<td>same_family_cross_season</td>
+<td>base_v0_4</td>
+<td>future_shot_h10</td>
+<td>71 838</td>
+<td>5 156</td>
+<td>2.925</td>
+<td>0.670</td>
+<td>0.190</td>
+</tr>
+<tr>
+<td>FIFA World Cup 2022</td>
+<td>same_family_cross_season</td>
+<td>base_v0_4</td>
+<td>future_shot_h10</td>
+<td>234 637</td>
+<td>13 863</td>
+<td>3.116</td>
+<td>0.673</td>
+<td>0.186</td>
+</tr>
+<tr>
+<td>Ligue 1 2021/2022</td>
+<td>club_transfer</td>
+<td>v0_5_candidate</td>
+<td>future_shot_h10</td>
+<td>101 766</td>
+<td>6 482</td>
+<td>2.940</td>
+<td>0.657</td>
+<td>0.177</td>
+</tr>
+<tr>
+<td>UEFA Euro 2024</td>
+<td>cross_competition_mens_international</td>
+<td>base_v0_4</td>
+<td>future_shot_h10</td>
+<td>187 924</td>
+<td>12 682</td>
+<td>2.941</td>
+<td>0.662</td>
+<td>0.183</td>
+</tr>
+<tr>
+<td>Women&#x27;s World Cup 2023</td>
+<td>gender_transfer</td>
+<td>v0_5_candidate</td>
+<td>future_shot_h10</td>
+<td>226 118</td>
+<td>15 555</td>
+<td>2.937</td>
+<td>0.668</td>
+<td>0.195</td>
+</tr>
+</tbody>
+</table>
+</div>
+      <p class="note">
+        Mobile UX rule: summary cards first, wide technical tables inside horizontal scroll containers, CSV download available.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="cta-panel">
+        <h2>Boundary of interpretation</h2>
+        <p>
+          Synathra.Sport v0.5 is not a bookmaker model and does not predict final scores.
+          It explains and ranks event-chain risk before visible danger appears.
+        </p>
+        <p>
+          <a class="button" href="../demo/index.html">Open demo</a>
+          <a class="button secondary" href="../docs/index.html">Open public documents</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Synathra Lab</strong><br>
+        <span>Computational event-chain models for risk, explanation and domain transfer.</span>
+      </div>
+      <div class="footer-links">
+        <a href="../../../../en/contact/index.html">Feedback</a>
+        <a href="../../../../en/sport/v0-5/docs/index.html">Documents</a>
+        <a href="../../../../en/sport/v0-5/validation/index.html">Validation</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
+
