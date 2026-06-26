@@ -377,3 +377,47 @@ input:focus, textarea:focus, select:focus {
   .split { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.25rem; align-items: start; }
   .footer-inner { grid-template-columns: 1fr auto; align-items: center; }
 }
+
+.contact-section {
+  padding: 72px 0;
+}
+
+.contact-card {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.04),
+    rgba(14, 165, 233, 0.06)
+  );
+}
+
+.contact-card h2 {
+  margin: 0 0 16px;
+}
+
+.contact-card p {
+  max-width: 720px;
+}
+
+.contact-email {
+  margin: 24px 0 12px;
+}
+
+.contact-email a {
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.contact-email a:hover {
+  text-decoration: underline;
+}
+
+.contact-note {
+  font-size: 0.95rem;
+  opacity: 0.75;
+}
