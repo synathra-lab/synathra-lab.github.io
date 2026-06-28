@@ -1,0 +1,9 @@
+validated_chain_subtype,matches_found,chains_found,goal_chains,avg_risk_delta_peak_calibrated,median_risk_delta_peak_calibrated,max_risk_delta_peak_calibrated,robustness_status_hardened
+open_play_goal_chain,1,1,1,0.71,0.71,0.71,promising
+counter_attack_shot_chain,1,1,1,0.5825,0.5825,0.5825,promising
+corner_shot_chain,4,8,2,0.6062,0.5803,0.7353,robust
+duel_to_shot_chain,3,3,2,0.6174,0.59,0.71,robust
+free_kick_shot_chain,2,3,0,0.6458,0.6022,0.7553,robust
+corner_after_stoppage_shot_chain,2,2,1,0.5792,0.5792,0.6325,robust
+shot_chain,1,1,0,0.58,0.58,0.58,weak_single_case
+recovery_to_shot_chain,1,1,0,0.5342,0.5342,0.5342,weak_single_case
