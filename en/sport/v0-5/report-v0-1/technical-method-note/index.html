@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Synathra.Sport Technical Method Note v0.1</title>
+  <meta name="description" content="Technical method note for Synathra.Sport v0.5: hybrid score, chain activation, robustness labels, and validation target definitions.">
+  <style>
+    :root {
+      --bg: #0b0f16;
+      --panel: #151b25;
+      --panel2: #101722;
+      --text: #eef4ff;
+      --muted: #b7c3d6;
+      --line: #2b3545;
+      --accent: #64f0c8;
+      --accent2: #7aa2ff;
+      --gold: #f6d45b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11,15,22,.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: auto;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: grid;
+      place-items: center;
+      color: #081018;
+      font-weight: 900;
+    }
+    .nav a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a.active {
+      color: var(--text);
+      background: #232a36;
+      padding: 8px 13px;
+      border-radius: 999px;
+    }
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 42px 24px 80px;
+    }
+    .hero {
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: clamp(34px, 6vw, 56px);
+      line-height: 1.05;
+      margin: 0 0 18px;
+      letter-spacing: -0.04em;
+    }
+    h2 {
+      margin-top: 38px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      font-size: 26px;
+      letter-spacing: -0.02em;
+    }
+    h3 {
+      margin-top: 26px;
+      font-size: 20px;
+      color: var(--accent);
+    }
+    p, li {
+      color: var(--muted);
+      font-size: 16px;
+    }
+    strong { color: var(--text); }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      background: #0e1420;
+      color: #dbe7ff;
+      padding: 2px 6px;
+      border-radius: 6px;
+      border: 1px solid #263146;
+      font-size: .92em;
+    }
+    pre {
+      overflow-x: auto;
+      background: #0e1420;
+      border: 1px solid #263146;
+      border-radius: 16px;
+      padding: 18px;
+      color: #dbe7ff;
+    }
+    pre code {
+      background: transparent;
+      border: none;
+      padding: 0;
+      color: inherit;
+    }
+    ul {
+      margin: 10px 0 18px 22px;
+      padding: 0;
+    }
+    .callout {
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px 22px;
+      margin: 26px 0;
+    }
+    .back {
+      margin-top: 42px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #151b25;
+      color: var(--text);
+      font-weight: 700;
+    }
+    footer {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 24px 48px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a class="brand" href="../../../../">
+        <span class="logo">S</span>
+        <span>Synathra Lab</span>
+      </a>
+      <a href="../">Report</a>
+      <a href="../#validation">Validation</a>
+      <a href="../#method-notes">Method notes</a>
+      <a class="active" href="./">Technical note</a>
+      <a href="../#chains">Chains</a>
+      <a href="../#versioning">Versioning</a>
+      <a href="../#pilot">Pilot</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Technical Method Note v0.1</div>
+      <h1>Synathra.Sport Technical Method Note v0.1</h1>
+      <p>
+        Hybrid score, event-risk components, chain activation, and robustness labels behind the public Synathra.Sport v0.5 report.
+      </p>
+    </section>
+
+    <section class="callout">
+      <p>
+        This page is a public technical/product note. It clarifies how to read the score and chain cards; it does not change the v0.5 validation numbers.
+      </p>
+    </section>
+
+    <article>
+      <p>﻿# Synathra.Sport Technical Method Note v0.1</p>
+<h2>Hybrid event-chain scoring, chain activation, and robustness labels</h2>
+<p><strong>Version:</strong> Technical Method Note v0.1</p>
+<p><strong>Related release:</strong> Synathra.Sport v0.5 validation release</p>
+<p><strong>Related product artifact:</strong> Synathra.Sport Media &amp; Academy Report v0.1</p>
+<p><strong>Status:</strong> Public technical/product note</p>
+<p><strong>Purpose:</strong> Explain the scoring components and interpretation rules behind the public Synathra.Sport v0.5 report.</p>
+<hr>
+<h2>1. Purpose of this note</h2>
+<p>Synathra.Sport v0.5 is a public validation release for an explainable football event-chain risk framework. The first product-oriented artifact built on top of it is the Synathra.Sport Media &amp; Academy Report v0.1.</p>
+<p>The report is designed to translate event-level football data into readable explanations for media analysts, academy coaches, independent analysts, data journalists, and early small-club pilot discussions.</p>
+<p>This technical note explains the key terms used in the report:</p>
+<ul>
+<li><code>hybrid_score_v0_1</code></li>
+<li><code>event_risk_calibrated</code></li>
+<li><code>inside_hardened_chain</code></li>
+<li><code>chain_delta_context</code></li>
+<li><code>subtype_reliability</code></li>
+<li><code>future_goal_h10</code></li>
+<li>chain activation</li>
+<li><code>risk_peak</code></li>
+<li><code>risk_delta</code></li>
+<li><code>robust</code> / <code>promising</code> chain labels</li>
+</ul>
+<p>The note is intentionally compact. It is not a full academic paper, not a complete model specification, and not an ablation study. Its role is to make the public report more interpretable and technically honest.</p>
+<hr>
+<h2>2. Versioning</h2>
+<p>Synathra.Sport currently uses several version labels. They refer to different layers.</p>
+<p><strong>Synathra.Sport v0.5</strong> refers to the validation engine and public validation release.</p>
+<p><strong>Media &amp; Academy Report v0.1</strong> refers to the first product-oriented report built from the v0.5 validation release.</p>
+<p><strong>Technical Method Note v0.1</strong> refers to this explanatory note. It defines the main score components and interpretation rules used in the public report.</p>
+<p><strong>Planned v0.2 work</strong> should include an ablation comparison, additional club-domain and women&#x27;s-football demonstration cards, and a more detailed methodological appendix.</p>
+<hr>
+<h2>3. Validation target: <code>future_goal_h10</code></h2>
+<p>The validation target used in the public snapshot is called:</p>
+<p><code>future_goal_h10</code></p>
+<p>In this release, a positive case means:</p>
+<p>&gt; a goal occurs within the next 10 event steps after the evaluated event.</p>
+<p>The &quot;h10&quot; suffix means &quot;horizon of 10 events.&quot; It does not mean 10 seconds, 10 minutes, or the full possession. It is an event-count horizon.</p>
+<p>This target is used to test whether the score can rank events so that the highest-ranked cases are richer in near-horizon goal outcomes than the base rate.</p>
+<p>The validation figure reports:</p>
+<ul>
+<li>mean top-10 lift: 4.79x</li>
+<li>minimum group lift: 4.68x</li>
+<li>ROC-AUC range: 0.729-0.756</li>
+<li>base rate: approximately 0.6-0.8%</li>
+</ul>
+<p>The baseline line in the validation chart is the base-rate reference, normalized to 1.0. A mean top-10 lift of 4.79x means that the top-ranked event windows are about 4.79 times richer in <code>future_goal_h10</code> outcomes than the base-rate reference.</p>
+<p>This should not be interpreted as a goal probability. It is a ranking-lift measure.</p>
+<hr>
+<h2>4. Hybrid score</h2>
+<p>The public v0.5 score is:</p>
+<pre><code>hybrid_score_v0_1 =
+0.50 В· event_risk_calibrated
++ 0.05 В· inside_hardened_chain
++ 0.10 В· chain_delta_context
++ 0.35 В· subtype_reliability</code></pre>
+<p>The score is normalized to the [0, 1] range in the public report.</p>
+<p>The formula is deliberately hybrid. It does not claim that the whole ranking signal comes from chain dynamics. Half of the weight comes from calibrated event-level risk, a substantial part comes from subtype reliability, and a smaller but important part comes from chain-context components.</p>
+<p>This is the correct reading:</p>
+<p>&gt; Synathra.Sport combines calibrated event risk, chain context, and subtype reliability. The chain layer is not the entire score; it is the explanatory context that helps translate a ranked event-risk signal into readable football sequences.</p>
+<hr>
+<h2>5. Component definitions</h2>
+<h3>5.1. <code>event_risk_calibrated</code></h3>
+<p><code>event_risk_calibrated</code> is a normalized continuous event-level risk estimate on a 0-1 scale.</p>
+<p>It represents how risk-relevant a single event appears before chain-context terms are added.</p>
+<p>Interpretation:</p>
+<ul>
+<li>low values indicate weak local risk signal;</li>
+<li>high values indicate stronger local event-level risk signal;</li>
+<li>the value is not a direct probability of a goal.</li>
+</ul>
+<p>Role in the formula:</p>
+<pre><code>weight = 0.50</code></pre>
+<p>This is the largest component of the public hybrid score.</p>
+<hr>
+<h3>5.2. <code>inside_hardened_chain</code></h3>
+<p><code>inside_hardened_chain</code> is a binary indicator.</p>
+<p>It takes the value:</p>
+<pre><code>1 = the event belongs to a filtered and stabilized chain pattern
+0 = the event does not belong to such a pattern</code></pre>
+<p>The word Hardened means that the chain pattern has passed the current rule/filter layer. It should not be read as a subjective tactical judgement.</p>
+<p>A hardened chain is a candidate event sequence that has survived basic filtering conditions such as:</p>
+<ul>
+<li>the sequence is locally coherent;</li>
+<li>the events occur within the selected event window;</li>
+<li>the chain is not a loose verbal label only;</li>
+<li>the sequence can be mapped to the public chain grammar used in the report.</li>
+</ul>
+<p>Role in the formula:</p>
+<pre><code>weight = 0.05</code></pre>
+<p>This component is intentionally small. It does not dominate the score, but it marks whether the event belongs to an interpretable chain pattern.</p>
+<hr>
+<h3>5.3. <code>chain_delta_context</code></h3>
+<p><code>chain_delta_context</code> is a normalized continuous measure of local risk change inside the selected event window.</p>
+<p>It captures whether the local sequence shows meaningful risk acceleration or risk accumulation.</p>
+<p>A simplified interpretation is:</p>
+<p>&gt; how much the local risk context rises inside the chain window.</p>
+<p>Role in the formula:</p>
+<pre><code>weight = 0.10</code></pre>
+<p>Together, <code>inside_hardened_chain</code> and <code>chain_delta_context</code> represent the explicitly chain-related part of the current public score.</p>
+<p>Their combined weight is:</p>
+<pre><code>0.05 + 0.10 = 0.15</code></pre>
+<p>This is why the v0.5 score should not be described as a pure chain-only model. It is a hybrid event-risk model with an explanatory chain layer.</p>
+<hr>
+<h3>5.4. <code>subtype_reliability</code></h3>
+<p><code>subtype_reliability</code> is a normalized reliability weight attached to the event subtype.</p>
+<p>It reflects how stable or informative the event subtype is in the validation setup.</p>
+<p>Interpretation:</p>
+<ul>
+<li>higher values indicate event subtypes that are more reliable for ranking risk-relevant cases;</li>
+<li>lower values indicate event subtypes with weaker or less stable signal;</li>
+<li>the value is normalized and should not be read as an independent causal effect.</li>
+</ul>
+<p>Role in the formula:</p>
+<pre><code>weight = 0.35</code></pre>
+<p>This component gives the model stability by accounting for event-subtype reliability.</p>
+<hr>
+<h2>6. Chain activation</h2>
+<p>A chain activation occurs when a local event sequence is selected as a risk-relevant sequence under the current scoring and filtering logic.</p>
+<p>In the public v0.5 report, a chain activation is not merely a tactical phrase such as &quot;transition&quot; or &quot;set-piece pressure.&quot; It is a selected event window where several conditions come together:</p>
+<p>1. The event window contains a coherent sequence of football events.</p>
+<p>2. The sequence includes events that can be mapped to a public chain type.</p>
+<p>3. The events show a sufficiently strong hybrid score signal.</p>
+<p>4. The local window shows a meaningful risk change or risk peak.</p>
+<p>5. The event subtypes have sufficient reliability under the current validation setup.</p>
+<p>6. The sequence can be translated into a readable media or academy interpretation.</p>
+<p>The current report uses event windows rather than full-match tactical phases. A selected chain card therefore describes a local episode, not the entire tactical identity of a team.</p>
+<p>A simplified chain-activation logic can be written as:</p>
+<pre><code>event sequence
+-> local scoring window
+-> hybrid score calculation
+-> chain-context check
+-> risk peak / risk delta extraction
+-> chain label assignment
+-> media and academy interpretation</code></pre>
+<p>This makes the chain card a reporting artifact rather than a black-box prediction.</p>
+<hr>
+<h2>7. Chain types in the public report</h2>
+<p>The public Media &amp; Academy Report v0.1 uses demonstration chain types such as:</p>
+<ul>
+<li>Transition Pressure Chain</li>
+<li>Corner Pressure Chain</li>
+<li>Free-Kick Second-Phase Chain</li>
+<li>Duel-to-Shot Chain</li>
+<li>Open-Play Goal Chain</li>
+</ul>
+<p>These names are not meant to be final universal taxonomy. They are public-facing labels that translate selected event sequences into readable football language.</p>
+<p>The technical role of the chain type is to summarize the dominant pattern in the selected event window.</p>
+<p>For example:</p>
+<p><strong>Transition Pressure Chain</strong> means that the selected event window is interpretable as danger forming through a contested or unstable transition phase.</p>
+<p><strong>Corner Pressure Chain</strong> means that the selected event window is interpretable as danger forming through a set-piece or second-ball pressure pattern.</p>
+<p><strong>Open-Play Goal Chain</strong> means that the selected event window is interpretable as danger forming through open-play progression before the visible endpoint.</p>
+<hr>
+<h2>8. <code>risk_peak</code></h2>
+<p><code>risk_peak</code> is the maximum normalized <code>hybrid_score_v0_1</code> observed inside the selected event window.</p>
+<p>It is reported on a 0-1 scale.</p>
+<p>A value such as:</p>
+<pre><code>risk_peak = 0.893</code></pre>
+<p>should be read as:</p>
+<p>&gt; the selected chain window contains a very high normalized hybrid risk point.</p>
+<p>It should not be read as:</p>
+<pre><code>89.3% probability of a goal</code></pre>
+<p>The public report uses <code>risk_peak</code> as a ranking and interpretation signal, not as a direct probability statement.</p>
+<hr>
+<h2>9. <code>risk_delta</code></h2>
+<p><code>risk_delta</code> is the local increase in normalized risk inside the selected event window.</p>
+<p>It describes how much the risk score rises from a lower-risk part of the window toward the peak-risk point.</p>
+<p>A value such as:</p>
+<pre><code>risk_delta = 0.5825</code></pre>
+<p>should be read as:</p>
+<p>&gt; the selected chain window contains a large local rise in normalized risk.</p>
+<p>It does not necessarily mean that one specific event caused the goal. Football sequences are multi-factor and context-dependent.</p>
+<p>The purpose of <code>risk_delta</code> is to help distinguish relatively flat high-risk windows from windows where risk visibly accelerates inside the sequence.</p>
+<hr>
+<h2>10. Robustness labels</h2>
+<p>The public demonstration cards may use two provisional labels:</p>
+<ul>
+<li><code>robust</code></li>
+<li><code>promising</code></li>
+</ul>
+<p>These are communication labels for the public report. They should not be treated as final statistical classes.</p>
+<h3>10.1. <code>robust</code></h3>
+<p>A chain example can be labelled <code>robust</code> when it satisfies the current report-level conditions:</p>
+<p>1. The chain window has a high normalized risk peak.</p>
+<p>2. The local risk delta is meaningful.</p>
+<p>3. The sequence is coherent and football-readable.</p>
+<p>4. The sequence can be mapped to a hardened chain type.</p>
+<p>5. The event subtypes have sufficient reliability.</p>
+<p>6. The episode supports both media interpretation and academy interpretation.</p>
+<p>7. The selected outcome or near-horizon target is consistent with the reported chain logic.</p>
+<p>A <code>robust</code> label means:</p>
+<p>&gt; this is a strong public demonstration example under the current v0.5 report logic.</p>
+<p>It does not mean:</p>
+<p>&gt; this chain type is universally validated in all football contexts.</p>
+<h3>10.2. <code>promising</code></h3>
+<p>A chain example can be labelled <code>promising</code> when it is interpretable and high-signal, but one or more report-level conditions are weaker.</p>
+<p>Typical reasons:</p>
+<ul>
+<li>the risk peak is high but not as strong as in robust examples;</li>
+<li>the local risk delta is meaningful but less stable;</li>
+<li>the sequence is football-readable but requires more examples;</li>
+<li>the chain type is useful as a demonstration but needs further validation across domains;</li>
+<li>the example is suitable for media or academy interpretation but should not yet be treated as a stable benchmark chain.</li>
+</ul>
+<p>A <code>promising</code> label means:</p>
+<p>&gt; this chain is a useful candidate for further testing, expansion, and video-review validation.</p>
+<p>It does not mean the example is invalid. It means that the evidence level is weaker than for <code>robust</code> demonstration cases.</p>
+<hr>
+<h2>11. Baseline and ablation status</h2>
+<p>The public v0.5 validation snapshot reports the performance of the frozen <code>hybrid_score_v0_1</code>.</p>
+<p>It does not yet report a full ablation comparison between:</p>
+<pre><code>event_risk_calibrated only</code></pre>
+<p>and:</p>
+<pre><code>full hybrid_score_v0_1</code></pre>
+<p>This comparison is important because it will show how much additional ranking value comes from chain context and subtype reliability beyond event-level risk alone.</p>
+<p>A future technical note should report at least:</p>
+<ul>
+<li>event-only top-10 lift;</li>
+<li>full hybrid-score top-10 lift;</li>
+<li>difference in lift;</li>
+<li>event-only ROC-AUC;</li>
+<li>full hybrid-score ROC-AUC;</li>
+<li>group-by-group comparison across the five validation groups.</li>
+</ul>
+<p>Until that ablation is published, the correct claim is:</p>
+<p>&gt; The frozen hybrid score produces a stable ranking signal across five football validation groups.</p>
+<p>The stronger claim:</p>
+<p>&gt; The chain-context components independently improve the event-only baseline by X%</p>
+<p>should be reserved for the ablation release.</p>
+<hr>
+<h2>12. Domain-transfer interpretation</h2>
+<p>Synathra.Sport v0.5 tests the same frozen scoring logic across five groups:</p>
+<ul>
+<li>FIFA World Cup 2018</li>
+<li>FIFA World Cup 2022</li>
+<li>UEFA Euro 2024</li>
+<li>Ligue 1 2021/2022</li>
+<li>Women&#x27;s World Cup 2023</li>
+</ul>
+<p>The domain-transfer logic is:</p>
+<pre><code>base contour
+-> frozen score
+-> club transfer
+-> gender transfer</code></pre>
+<p>The important methodological point is that the transfer groups are not locally reweighted in the public validation snapshot.</p>
+<p>This supports the public claim that the same score can be tested across multiple football contexts.</p>
+<p>However, the current v0.1 demonstration cards are still concentrated in men&#x27;s international football. A later report should add public demonstration cards from:</p>
+<ul>
+<li>Ligue 1 2021/2022;</li>
+<li>Women&#x27;s World Cup 2023.</li>
+</ul>
+<p>This will make the domain-transfer claim visible not only in the validation table, but also in concrete chain examples.</p>
+<hr>
+<h2>13. Relationship to xT, VAEP, and xGChain</h2>
+<p>Synathra.Sport should not be presented as a replacement for existing football analytics methods.</p>
+<p>The distinction is functional:</p>
+<p><strong>xT</strong> values how actions move the ball into more threatening zones.</p>
+<p><strong>VAEP-style models</strong> estimate how actions change the probability of scoring or conceding.</p>
+<p><strong>xGChain and xGBuildup</strong> attribute involvement in attacking sequences to players.</p>
+<p><strong>Synathra.Sport</strong> ranks risk-relevant event windows and translates selected sequences into readable chain explanations.</p>
+<p>The most natural output is not a player leaderboard. It is a report artifact:</p>
+<ul>
+<li>risk-chain of the match;</li>
+<li>turning-point chain;</li>
+<li>transition-pressure chain;</li>
+<li>set-piece second-phase chain;</li>
+<li>team risk-chain profile;</li>
+<li>coach education note.</li>
+</ul>
+<p>A future technical comparison should apply xT, VAEP, xGChain, and Synathra.Sport to the same selected episodes. That comparison is not included in v0.1.</p>
+<hr>
+<h2>14. Current limitations</h2>
+<p>The v0.5 / v0.1 public release has several important limitations.</p>
+<p>First, the public score is hybrid and should not be described as a pure sequence model.</p>
+<p>Second, the current public note does not include full ablation results.</p>
+<p>Third, the demonstration chain cards are not yet balanced across all validation domains.</p>
+<p>Fourth, the robustness labels are provisional report-level labels rather than final statistical classes.</p>
+<p>Fifth, the score is a ranking and explanation signal, not a direct probability of scoring.</p>
+<p>Sixth, the current report does not replace video analysis, tracking data, club-specific tactical models, or licensed data-provider workflows.</p>
+<p>These limitations are not defects of the public release. They define the next development steps.</p>
+<hr>
+<h2>15. Recommended next technical steps</h2>
+<p>The next technical release should include:</p>
+<p>1. Ablation study:</p>
+<p>* <code>event_risk_calibrated</code> only;</p>
+<p>* full <code>hybrid_score_v0_1</code>;</p>
+<p>* group-by-group lift and ROC-AUC comparison.</p>
+<p>2. Transfer-domain chain cards:</p>
+<p>* at least one Ligue 1 2021/2022 example;</p>
+<p>* at least one Women&#x27;s World Cup 2023 example.</p>
+<p>3. Formal chain-window rules:</p>
+<p>* event-window size;</p>
+<p>* start condition;</p>
+<p>* end condition;</p>
+<p>* interruption logic;</p>
+<p>* minimum score thresholds.</p>
+<p>4. Robustness criteria refinement:</p>
+<p>* numeric thresholds for <code>risk_peak</code>;</p>
+<p>* numeric thresholds for <code>risk_delta</code>;</p>
+<p>* recurrence criteria by chain type;</p>
+<p>* domain-transfer presence.</p>
+<p>5. Same-episode comparison:</p>
+<p>* Synathra.Sport vs xT;</p>
+<p>* Synathra.Sport vs VAEP;</p>
+<p>* Synathra.Sport vs xGChain / xGBuildup.</p>
+<hr>
+<h2>16. Summary</h2>
+<p>Synathra.Sport v0.5 uses a frozen hybrid score:</p>
+<pre><code>hybrid_score_v0_1 =
+0.50 В· event_risk_calibrated
++ 0.05 В· inside_hardened_chain
++ 0.10 В· chain_delta_context
++ 0.35 В· subtype_reliability</code></pre>
+<p>The current public interpretation is:</p>
+<p>&gt; calibrated event risk provides the main local signal; subtype reliability stabilizes the ranking; chain context turns the score into a readable sequence explanation.</p>
+<p>The product value is not only the numeric score. It is the translation of selected event windows into media-readable and coach-readable chain cards.</p>
+<p>That is the core role of Synathra.Sport at this stage:</p>
+<p>&gt; event-chain risk intelligence for explaining how football danger forms before it becomes visible.</p>
+    </article>
+
+    <div class="back">
+      <a class="button" href="../">Back to report</a>
+      <a class="button" href="../#method-notes">Method notes</a>
+    </div>
+  </main>
+
+  <footer>
+    Synathra.Sport v0.5 / Technical Method Note v0.1
+  </footer>
+</body>
+</html>
