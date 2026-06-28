@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Synathra.Sport Ablation Note v0.1</title>
+  <meta name="description" content="Ablation comparison for Synathra.Sport v0.5: event-only baseline versus full hybrid_score_v0_1 across five football validation groups.">
+  <style>
+    :root {
+      --bg: #0b0f16;
+      --panel: #151b25;
+      --panel2: #101722;
+      --text: #eef4ff;
+      --muted: #b7c3d6;
+      --line: #2b3545;
+      --accent: #64f0c8;
+      --accent2: #7aa2ff;
+      --good: #8fffcf;
+      --gold: #f6d45b;
+      --danger: #ff7b90;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top left, rgba(100,240,200,.08), transparent 34%), var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.62;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11,15,22,.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+    .nav {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: auto;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: grid;
+      place-items: center;
+      color: #081018;
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+    .nav a { color: var(--muted); font-size: 14px; }
+    .nav a.active {
+      color: var(--text);
+      background: #232a36;
+      padding: 8px 13px;
+      border-radius: 999px;
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 44px 24px 84px;
+    }
+    .hero { margin-bottom: 30px; }
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.05;
+      margin: 0 0 18px;
+      letter-spacing: -0.04em;
+      max-width: 900px;
+    }
+    .lead {
+      color: var(--muted);
+      font-size: 19px;
+      max-width: 850px;
+    }
+    h2 {
+      margin-top: 42px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-size: 28px;
+      letter-spacing: -0.02em;
+    }
+    h3 {
+      margin-top: 26px;
+      font-size: 20px;
+      color: var(--accent);
+    }
+    p, li { color: var(--muted); font-size: 16px; }
+    strong, .strong { color: var(--text); font-weight: 800; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      background: #0e1420;
+      color: #dbe7ff;
+      padding: 2px 6px;
+      border-radius: 6px;
+      border: 1px solid #263146;
+      font-size: .92em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 30px 0;
+    }
+    .card {
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      min-height: 126px;
+    }
+    .metric {
+      font-size: 31px;
+      line-height: 1.05;
+      font-weight: 850;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .label { color: var(--muted); font-size: 13px; }
+    .callout {
+      background: linear-gradient(180deg, rgba(100,240,200,.12), rgba(122,162,255,.08));
+      border: 1px solid rgba(100,240,200,.38);
+      border-radius: 22px;
+      padding: 20px 22px;
+      margin: 26px 0;
+    }
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 22px 0;
+    }
+    .formula {
+      background: #0e1420;
+      border: 1px solid #263146;
+      border-radius: 18px;
+      padding: 18px;
+      color: #dbe7ff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(21,27,37,.75);
+      margin: 22px 0;
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 980px; }
+    th, td {
+      padding: 12px 13px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      font-size: 14px;
+    }
+    th {
+      text-align: left;
+      color: var(--text);
+      background: #121926;
+      font-size: 12px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    td { color: var(--muted); }
+    tr:last-child td { border-bottom: none; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .gain { color: var(--good); font-weight: 800; }
+    .downloads {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .download {
+      display: block;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--panel);
+      color: var(--text);
+      font-weight: 700;
+    }
+    .download span { display: block; color: var(--muted); font-weight: 500; font-size: 13px; margin-top: 3px; }
+    .back {
+      margin-top: 42px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #151b25;
+      color: var(--text);
+      font-weight: 700;
+    }
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 24px 48px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .split { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      .grid, .downloads { grid-template-columns: 1fr; }
+      main { padding-left: 18px; padding-right: 18px; }
+      .nav { padding-left: 18px; padding-right: 18px; }
+    }
+  
+    table th:nth-child(n+3),
+    table td:nth-child(n+3) {
+      white-space: nowrap;
+    }
+    table td:first-child {
+      min-width: 110px;
+    }
+
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a class="brand" href="../../../../">
+        <span class="logo">S</span>
+        <span>Synathra Lab</span>
+      </a>
+      <a href="../">Report</a>
+      <a href="../#validation">Validation</a>
+      <a href="../method-notes/">Method notes</a>
+      <a href="../technical-method-note/">Technical note</a>
+      <a class="active" href="./">Ablation note</a>
+      <a href="../#chains">Chains</a>
+      <a href="../#versioning">Versioning</a>
+      <a href="../#pilot">Pilot</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Ablation Note v0.1</div>
+      <h1>Synathra.Sport Ablation Note v0.1</h1>
+      <p class="lead">
+        Event-only baseline versus full <code>hybrid_score_v0_1</code> across five football validation groups.
+        The note answers whether the hybrid event-chain layer adds measurable ranking value beyond calibrated event risk alone.
+      </p>
+    </section>
+
+    <section class="grid" aria-label="Summary metrics">
+      <div class="card">
+        <div class="metric">5</div>
+        <div class="label">validation groups</div>
+      </div>
+      <div class="card">
+        <div class="metric">822 283</div>
+        <div class="label">event rows</div>
+      </div>
+      <div class="card">
+        <div class="metric">4.79x</div>
+        <div class="label">mean full hybrid top-10 lift</div>
+      </div>
+      <div class="card">
+        <div class="metric">+2.22x</div>
+        <div class="label">mean lift gain vs event-only</div>
+      </div>
+    </section>
+
+    <section class="callout">
+      <p>
+        <strong>Main result:</strong> the full frozen <code>hybrid_score_v0_1</code> improves the event-only baseline in all five validation groups. Mean top-10 lift increases from <strong>2.57x</strong> to <strong>4.79x</strong>. Mean ROC-AUC increases from <strong>0.637</strong> to <strong>0.742</strong>.
+      </p>
+    </section>
+
+    <h2>1. Purpose</h2>
+    <p>
+      The public v0.5 report showed that a frozen hybrid score transfers across men's international tournaments, club football, and women's football. The remaining reviewer question was whether the full score adds value beyond a simple event-risk ranking. This ablation note compares an event-only baseline with the full hybrid score on the same target and the same five validation groups.
+    </p>
+
+    <h2>2. Compared scores</h2>
+    <div class="split">
+      <div class="card">
+        <h3>Event-only baseline</h3>
+        <p>
+          The baseline ranks events by <code>event_risk_calibrated only</code>. In the v0.5 exported event-level tables, the operational column used is <code>synathra_calibrated_score</code>, because the public scoring script falls back to this column when a literal <code>event_risk_calibrated</code> column is absent.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Full hybrid score</h3>
+        <p>
+          The full model ranks events by the frozen public score <code>hybrid_score_v0_1</code>. It combines event risk with chain membership, local chain-delta context, and subtype reliability.
+        </p>
+      </div>
+    </div>
+
+    <div class="formula">hybrid_score_v0_1 =
+0.50 * event_risk_calibrated
++ 0.05 * inside_hardened_chain
++ 0.10 * chain_delta_context
++ 0.35 * subtype_reliability</div>
+
+    <p>
+      The validation target is <code>future_goal_h10</code>: a positive case means that a goal occurs within the next 10 event steps after the evaluated event. Top-10 lift compares the positive rate in the top decile by score with the base rate of the corresponding validation group.
+    </p>
+
+    <h2>3. Group-by-group results</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Validation group</th>
+            <th>Domain type</th>
+            <th class="num">Rows</th>
+            <th class="num">Positives</th>
+            <th class="num">Base rate</th>
+            <th class="num">Event-only lift</th>
+            <th class="num">Full hybrid lift</th>
+            <th class="num">Lift gain</th>
+            <th class="num">Event-only AUC</th>
+            <th class="num">Full AUC</th>
+            <th class="num">AUC gain</th>
+          </tr>
+        </thead>
+        <tbody>
+
+      <tr>
+        <td>FIFA World Cup 2018</td>
+        <td>same_family_base</td>
+        <td class="num">71 838</td>
+        <td class="num">590</td>
+        <td class="num">0.82%</td>
+        <td class="num">2.51x</td>
+        <td class="num strong">4.66x</td>
+        <td class="num gain">+2.15x</td>
+        <td class="num">0.637</td>
+        <td class="num strong">0.742</td>
+        <td class="num gain">+0.105</td>
+      </tr>
+
+      <tr>
+        <td>FIFA World Cup 2022</td>
+        <td>same_family_cross_season</td>
+        <td class="num">234 637</td>
+        <td class="num">1 808</td>
+        <td class="num">0.77%</td>
+        <td class="num">2.59x</td>
+        <td class="num strong">5.01x</td>
+        <td class="num gain">+2.41x</td>
+        <td class="num">0.632</td>
+        <td class="num strong">0.748</td>
+        <td class="num gain">+0.116</td>
+      </tr>
+
+      <tr>
+        <td>UEFA Euro 2024</td>
+        <td>cross_competition_mens_international</td>
+        <td class="num">187 924</td>
+        <td class="num">1 140</td>
+        <td class="num">0.61%</td>
+        <td class="num">2.84x</td>
+        <td class="num strong">4.77x</td>
+        <td class="num gain">+1.93x</td>
+        <td class="num">0.670</td>
+        <td class="num strong">0.756</td>
+        <td class="num gain">+0.086</td>
+      </tr>
+
+      <tr>
+        <td>Ligue 1 2021/2022</td>
+        <td>club_transfer</td>
+        <td class="num">101 766</td>
+        <td class="num">810</td>
+        <td class="num">0.80%</td>
+        <td class="num">2.58x</td>
+        <td class="num strong">4.69x</td>
+        <td class="num gain">+2.11x</td>
+        <td class="num">0.626</td>
+        <td class="num strong">0.734</td>
+        <td class="num gain">+0.108</td>
+      </tr>
+
+      <tr>
+        <td>Women&#x27;s World Cup 2023</td>
+        <td>gender_transfer</td>
+        <td class="num">226 118</td>
+        <td class="num">1 664</td>
+        <td class="num">0.74%</td>
+        <td class="num">2.33x</td>
+        <td class="num strong">4.84x</td>
+        <td class="num gain">+2.52x</td>
+        <td class="num">0.618</td>
+        <td class="num strong">0.729</td>
+        <td class="num gain">+0.111</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>4. Interpretation</h2>
+    <p>
+      The full <code>hybrid_score_v0_1</code> improves the event-only baseline on top-10 lift in every validation group. The mean lift increase is <strong>+2.22x</strong>, or approximately <strong>87.4%</strong> relative to the event-only baseline. This supports the product claim that Synathra.Sport is not merely a calibrated event-risk ranking: the chain-context and subtype-reliability terms add measurable value for identifying the highest-risk event windows.
+    </p>
+    <p>
+      ROC-AUC also improves in every group. The mean AUC gain is <strong>+0.105</strong>. This global ranking improvement is smaller than the top-decile lift gain, which is expected because the product use case is concentrated in the highest-ranked event windows used for reports, chain cards, and analyst review.
+    </p>
+
+    <h2>5. Product conclusion</h2>
+    <p>
+      The ablation result strengthens the public v0.5 validation package. The hybrid layer is empirically useful: it preserves transfer across domains while improving ranking quality over event-risk alone. For media, academy, and small-club use cases, the practical implication is that Synathra.Sport can prioritize a smaller set of interpretable high-signal sequences rather than only ranking isolated events.
+    </p>
+
+    <h2>6. Caveat</h2>
+    <p>
+      This note uses <code>synathra_calibrated_score</code> as the event-only baseline because the v0.5 event-level exports do not contain a literal <code>event_risk_calibrated</code> column. This follows the fallback order used by the public <code>compute_hybrid_score_v0_1.py</code> script. If a future pipeline exports a literal <code>event_risk_calibrated</code> column, the ablation should be re-run with that exact column name for strict nomenclature alignment.
+    </p>
+
+    <h2>7. Data files</h2>
+    <div class="downloads">
+      <a class="download" href="data/ablation_event_only_vs_hybrid_group_metrics.csv">Group metrics CSV<span>Rounded public comparison table</span></a>
+      <a class="download" href="data/ablation_event_only_vs_hybrid_group_metrics_full_precision.csv">Full precision CSV<span>Full numeric precision for audit/recalculation</span></a>
+      <a class="download" href="data/ablation_input_table_inventory.csv">Input table inventory<span>Source event-level tables used in the computation</span></a>
+      <a class="download" href="data/ablation_summary.json">Summary JSON<span>Machine-readable summary metrics</span></a>
+    </div>
+    <p>
+      The computation draft is also available as Markdown: <a href="ABLATION_NOTE_v0_1_COMPUTATION_DRAFT.md"><code>ABLATION_NOTE_v0_1_COMPUTATION_DRAFT.md</code></a>.
+    </p>
+
+    <div class="back">
+      <a class="button" href="../">Back to report</a>
+      <a class="button" href="../technical-method-note/">Technical Method Note</a>
+      <a class="button" href="../method-notes/">Method notes</a>
+    </div>
+  </main>
+
+  <footer>
+    Synathra.Sport v0.5 / Ablation Note v0.1. Public validation-support page for the Synathra Lab report package.
+  </footer>
+</body>
+</html>
