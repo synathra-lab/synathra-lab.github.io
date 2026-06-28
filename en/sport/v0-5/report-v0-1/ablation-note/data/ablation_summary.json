@@ -1,0 +1,16 @@
+{
+  "groups": 5,
+  "total_observations": 822283,
+  "total_positives": 6012,
+  "mean_base_rate": 0.007460630226873112,
+  "mean_event_only_top10_lift": 2.5700517459323997,
+  "mean_full_top10_lift": 4.794602485421427,
+  "mean_lift_delta_abs": 2.224550739489028,
+  "mean_lift_delta_pct": 0.8735254274245363,
+  "min_transfer_full_lift": 4.691173634084118,
+  "min_transfer_event_only_lift": 2.3257005831655078,
+  "mean_event_only_roc_auc": 0.6365265203115197,
+  "mean_full_roc_auc": 0.7418982183843933,
+  "mean_auc_delta_abs": 0.10537169807287372,
+  "event_only_column_used": "synathra_calibrated_score when event_risk_calibrated column is absent; this follows scripts/compute_hybrid_score_v0_1.py fallback order."
+}
