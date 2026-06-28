@@ -1,4 +1,4 @@
-# Synathra.Sport report site patch v0.1.1 — method notes
+﻿# Synathra.Sport report site patch v0.1.1 - method notes
 
 This documentation patch clarifies the public Media & Academy Report v0.1 page. It does not change Synathra.Sport v0.5 validation metrics.
 
@@ -38,3 +38,5 @@ hybrid_score_v0_1_raw =
 - Synathra.Sport v0.5 = validation engine / public release.
 - Media & Academy Report v0.1 = first product report.
 - Site patch v0.1.1 = documentation clarification patch.
+
+
